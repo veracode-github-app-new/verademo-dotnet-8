@@ -21,3 +21,20 @@ jobs:
         fi
         echo $project_dir
       shell: bash
+
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0.x'
+    - name: Build
+      working-directory: $project_dir
+      run: |
+        dotnet restore
+        dotnet publish -p:UseAppHost=False -p:MapFileExtensions=False -c Debug -o ./output
+    - name: Create zip archive
+      run: zip -r veracode.zip ./output
+
+    - uses: actions/upload-artifact@v3
+      with:
+        name: veracode-artifact
+        path: veracode.zip
