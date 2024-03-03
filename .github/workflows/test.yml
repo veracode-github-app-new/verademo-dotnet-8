@@ -28,7 +28,7 @@ jobs:
       with:
         dotnet-version: '8.0.x'
     - name: Build
-      working-directory: ${{ steps.find-project.outputs.project_dir }} 
+      working-directory: src/verademo-dotnet
       run: |
         dotnet restore
         dotnet publish -p:UseAppHost=False -p:MapFileExtensions=False -c Debug -o ./output
