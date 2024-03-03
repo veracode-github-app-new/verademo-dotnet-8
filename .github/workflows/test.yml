@@ -1,0 +1,17 @@
+name: Test Workflow
+
+on:
+  push:
+    branches: [ main ] # Trigger the workflow on push events to the main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3 # Action to checkout the repository
+
+    - name: Run Tests
+      run: |
+        echo "Hello World!"
