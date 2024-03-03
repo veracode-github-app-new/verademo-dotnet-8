@@ -12,6 +12,12 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v3 # Action to checkout the repository
 
-    - name: Run Tests
+    - name: Find .csproj file
       run: |
-        echo "Hello World!"
+        project_dir=$(find . -maxdepth 1 -type d -name "*.[cp]proj")
+        if [[ -z "$project_dir" ]]; then
+          echo "Error: No .csproj file found"
+          exit 1
+        fi
+        echo $project_dir
+      shell: bash
