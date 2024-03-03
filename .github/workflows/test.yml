@@ -13,6 +13,7 @@ jobs:
       uses: actions/checkout@v3 # Action to checkout the repository
 
     - name: Find .csproj file
+      id: find-project
       run: |
         project_dir=$(find . -type f -name "*.csproj" | head -n 1)
         if [[ -z "$project_dir" ]]; then
@@ -27,7 +28,7 @@ jobs:
       with:
         dotnet-version: '8.0.x'
     - name: Build
-      working-directory: $project_dir
+      working-directory: ${{ steps.find-project.outputs.project_dir }} 
       run: |
         dotnet restore
         dotnet publish -p:UseAppHost=False -p:MapFileExtensions=False -c Debug -o ./output
