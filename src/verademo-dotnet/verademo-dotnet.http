@@ -1,0 +1,6 @@
+@verademo_dotnet_HostAddress = http://localhost:5043
+
+GET {{verademo_dotnet_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
