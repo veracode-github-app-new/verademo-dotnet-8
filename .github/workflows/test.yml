@@ -30,7 +30,7 @@ jobs:
     - name: Build
       working-directory: src/verademo-dotnet
       run: |
-        echo ${{ steps.find-project.outputs.project_dir }}
+        echo "Project Directory: ${{ steps.find-project.outputs.project_dir }}"
         dotnet restore
         dotnet publish -p:UseAppHost=False -p:MapFileExtensions=False -c Debug -o ./output
     - name: Create zip archive
