@@ -21,6 +21,7 @@ jobs:
           exit 1
         fi
         echo $project_dir
+        echo "project_dir=$project_dir" >> "$GITHUB_OUTPUT"
       shell: bash
 
     - name: Setup .NET Core
