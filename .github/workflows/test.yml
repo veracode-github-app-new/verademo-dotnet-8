@@ -29,7 +29,7 @@ jobs:
       with:
         dotnet-version: '8.0.x'
     - name: Build
-      working-directory: src/verademo-dotnet
+      working-directory: ${{ steps.find-project.outputs.project_dir }}
       run: |
         echo "Project Directory: ${{ steps.find-project.outputs.project_dir }}"
         dotnet restore
