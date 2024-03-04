@@ -34,7 +34,9 @@ jobs:
         echo "Project Directory: ${{ steps.find-project.outputs.project_dir }}"
         dotnet restore
         dotnet publish -p:UseAppHost=False -p:MapFileExtensions=False -c Debug -o ./output
+        
     - name: Create zip archive
+      working-directory: ${{ steps.find-project.outputs.project_dir }}
       run: zip -r veracode.zip ./output
 
     - uses: actions/upload-artifact@v3
